@@ -6,16 +6,21 @@ const arrayOfObjects = [
   { id: 5, hobby: "Gardening", favoriteColor: "Green" },
 ];
 
-const obj = { age: 25, occupation: "Artist" };
+const findKey1 = { name: "Bob" };
+const findKey2 = { age: 25, occupation: "Artist" };
+const findKey3 = { age: 30, occupation: "Artist" };
 
-const matchingObjects = arrayOfObjects.filter((data) => {
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      if (obj[key] === data[key]) {
-        return true;
-      }
+const result = (array, obj) => {
+  return array.filter((data) => {
+    for (let key in obj) {
+      if (obj[key] !== data[key]) return false;
     }
-  }
-});
+    return true;
+  });
+};
 
-console.log("Matching Objects In Array", matchingObjects);
+
+
+console.log("test case 1", result(arrayOfObjects, findKey1));
+console.log("test case 2", result(arrayOfObjects, findKey2));
+console.log("test case 3", result(arrayOfObjects, findKey3));
